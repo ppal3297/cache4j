@@ -1,0 +1,8 @@
+PUT http://localhost:8080/cache?key=123
+Content-Type: application/text/plain
+
+val123
+
+###
+
+GET http://localhost:8080/cache?key=123
