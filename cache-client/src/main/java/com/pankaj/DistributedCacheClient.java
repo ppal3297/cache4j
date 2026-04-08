@@ -20,7 +20,7 @@ public class DistributedCacheClient {
     public void put(String key, String value) throws IOException, InterruptedException{
         String node = ring.getNode(key);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(node + "/cache?key="+node))
+                .uri(URI.create(node + "/cache?key="+key))
                 .PUT(HttpRequest.BodyPublishers.ofString(value))
                 .build();
         client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -29,7 +29,7 @@ public class DistributedCacheClient {
     public String get(String key) throws IOException, InterruptedException{
         String node = ring.getNode(key);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(node + "/cache?key="+node))
+                .uri(URI.create(node + "/cache?key="+key))
                 .GET()
                 .build();
         return client.send(request, HttpResponse.BodyHandlers.ofString()).body();

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class Client {
     public static void main(String[] args) throws IOException, InterruptedException {
         List<String> urls = List.of("http://localhost:8080");
         DistributedCacheClient client = new DistributedCacheClient(urls);
